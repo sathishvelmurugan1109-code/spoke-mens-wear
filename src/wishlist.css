@@ -1,0 +1,85 @@
+/* ============================================================
+   SPOKE — Wishlist / Favorites fix
+   Scoped to .wl-* plus the wishlist heart states.
+   Reuses the existing drawer + luxury dark-luxury tokens so the
+   panel matches CartDrawer / Navbar without redesigning anything.
+   ============================================================ */
+
+/* --- Layering -------------------------------------------------
+   Splash is 2000, toast 300, qv-overlay 140, search 130,
+   navbar 100, cart drawer 90. The wishlist must sit above the
+   navbar and cart, but stay under splash + toast. */
+.wl-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.68); z-index: 145; backdrop-filter: blur(3px); animation: wl-fade .25s ease; }
+.wl-drawer  { position: fixed; top: 0; right: 0; height: 100dvh; width: min(430px, 92vw); background: linear-gradient(180deg, #07180f, #020906); border-left: 1px solid rgba(217,180,91,.25); z-index: 150; display: flex; flex-direction: column; box-shadow: -30px 0 80px rgba(0,0,0,.6); animation: wl-slide .3s var(--ease); }
+@keyframes wl-fade { from { opacity: 0 } to { opacity: 1 } }
+@keyframes wl-slide { from { transform: translateX(100%) } to { transform: none } }
+
+.wl-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px; border-bottom: 1px solid rgba(255,255,255,.1); flex: none; }
+.wl-eyebrow { display: block; font-size: 9.5px; letter-spacing: .34em; color: var(--gold); margin-bottom: 5px; }
+.wl-title { font-family: Oswald, sans-serif; font-size: 17px; letter-spacing: .12em; color: #fff; }
+.wl-count { color: var(--lime); }
+
+.wl-body { flex: 1; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: 16px 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+
+/* --- Empty state ---------------------------------------------- */
+.wl-empty { margin: auto 0; text-align: center; padding: 34px 6px; display: flex; flex-direction: column; align-items: center; }
+.wl-empty-mark { font-size: 44px; line-height: 1; color: var(--gold); opacity: .55; margin-bottom: 16px; }
+.wl-empty h4 { font-family: Oswald, sans-serif; font-size: clamp(19px, 4.6vw, 24px); letter-spacing: .08em; color: #fff; }
+.wl-empty p { color: var(--muted); font-size: 13.5px; margin: 10px 0 22px; max-width: 30ch; }
+.wl-empty-btn { width: 100%; max-width: 300px; justify-content: center; min-height: 52px; }
+
+/* --- Product rows --------------------------------------------- */
+.wl-line { display: grid; grid-template-columns: 74px 1fr auto; gap: 12px; align-items: start; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.1); padding: 12px; animation: wl-in .28s var(--ease) both; }
+@keyframes wl-in { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+.wl-line > img { width: 74px; height: 92px; object-fit: cover; border: 1px solid rgba(255,255,255,.08); }
+.wl-line-body { min-width: 0; }
+.wl-line-cat { display: block; font-size: 9.5px; letter-spacing: .24em; color: var(--mint); }
+.wl-line-name { font-size: 13.5px; font-weight: 700; color: #fff; margin: 5px 0 6px; line-height: 1.35; }
+.wl-line-price { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; font-size: 13px; }
+.wl-line-price b { font-weight: 800; }
+
+/* Cart checkout button — only affects the EMPTY-cart state, so the
+   normal checkout appearance is completely unchanged. */
+.drawer-foot .btn:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }
+
+
+/* TrendingCarousel card (.lux-wish) — was 36px with a static aria-label */
+.lux-wish { width: 44px; height: 44px; top: 8px; right: 8px; display: grid; place-items: center; font-size: 18px; line-height: 1; cursor: pointer; }
+.lux-wish.active { animation: wl-pop .26s var(--ease); box-shadow: 0 0 0 5px rgba(185,255,60,.16), 0 0 20px rgba(185,255,60,.28); }
+.lux-wish:focus-visible, .na-wish:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+
+/* NewArrivals card is already 44px; just add the glow + shared timing */
+#new-arrivals .na-wish.active { animation: wl-pop .26s var(--ease); box-shadow: 0 0 0 5px rgba(74,222,128,.16), 0 0 22px rgba(74,222,128,.3); }
+
+/* Search overlay rows */
+.search-hit .wl-search-wish { width: 44px; height: 44px; display: grid; place-items: center; background: transparent; border: 1px solid rgba(255,255,255,.16); color: #eef6ee; font-size: 15px; transition: .25s; }
+.search-hit .wl-search-wish.active { color: var(--lime); border-color: var(--lime); animation: wl-pop .26s var(--ease); }
+.search-hit .wl-search-wish:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+
+/* --- Responsive / mobile --------------------------------------- */
+@media (max-width: 760px) {
+  .wl-drawer { width: 100vw; border-left: none; }
+  .wl-body { padding: 14px 14px calc(20px + env(safe-area-inset-bottom)); }
+  .wl-act { min-height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-overlay, .wl-drawer, .wl-line, .lux-wish.active,
+  #new-arrivals .na-wish.active, .search-hit .wl-search-wish.active { animation: none !important; }
+}
+
+.wl-line-price s { color: var(--muted); font-size: 11.5px; }
+.wl-line-price em { font-style: normal; font-size: 9.5px; font-weight: 800; letter-spacing: .12em; color: var(--gold); }
+
+.wl-line-actions { display: flex; gap: 8px; margin-top: 11px; flex-wrap: wrap; }
+.wl-act { min-height: 44px; padding: 0 14px; font-size: 10px; font-weight: 800; letter-spacing: .14em; border: 1px solid transparent; transition: .25s var(--ease); }
+.wl-act--cart { flex: 1; min-width: 120px; background: var(--lime); color: #08130c; }
+.wl-act--cart:hover { background: #d4ff5e; box-shadow: 0 0 0 5px rgba(185,255,60,.14); }
+.wl-act--view { background: transparent; border-color: rgba(255,255,255,.28); color: #eef6ee; }
+.wl-act--view:hover { border-color: var(--lime); color: var(--lime); }
+
+.wl-remove { width: 44px; height: 44px; display: grid; place-items: center; background: transparent; border: 1px solid rgba(255,255,255,.16); color: var(--lime); font-size: 15px; transition: .25s; }
+.wl-remove:hover { border-color: #ff6b81; color: #ff6b81; background: rgba(255,107,129,.1); }
+
+/* --- Heart buttons: shared premium pop ------------------------- */
+@keyframes wl-pop { 0% { transform: scale(.9) } 55% { transform: scale(1.15) } 100% { transform: scale(1) } }

@@ -1,0 +1,21 @@
+/* editorial + why + reviews */
+.lux-split{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(217,180,91,.2);background:#04120c;overflow:hidden;margin-top:20px}
+.lux-split-img{position:relative;min-height:520px;background:url('https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=1000&auto=format&fit=crop') center/cover}
+.lux-split-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,16,11,.5),rgba(4,16,11,.05))}
+.lux-split-words{position:absolute;z-index:2;left:30px;top:50%;transform:translateY(-50%);font-size:11px;letter-spacing:.34em;line-height:2.6;color:#d7e4da}
+.lux-split-txt{padding:70px 60px;display:flex;flex-direction:column;justify-content:center;background:#020604}
+.lux-split-txt h2{font-family:'Oswald';font-size:clamp(36px,4.4vw,60px);line-height:1.02}
+.lux-split-txt h2 em{font-style:normal;color:var(--lime)}
+.lux-split-txt .script{font-size:clamp(34px,3.4vw,48px);color:var(--champagne);margin-top:8px}
+.lux-why{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+.lux-why-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);padding:30px 24px;transition:.35s var(--ease);position:relative}
+.lux-why-card:hover{transform:translateY(-6px);border-color:rgba(217,180,91,.4)}
+.lux-why-card .ic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:22px;color:var(--gold);border:1px solid rgba(217,180,91,.5);background:rgba(217,180,91,.08)}
+.lux-why-card h4{font-size:12px;letter-spacing:.16em;margin:16px 0 8px}
+.lux-why-card p{font-size:13px;color:var(--muted)}
+.lux-tests{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.lux-test{background:#07130c;border:1px solid rgba(255,255,255,.08);padding:28px 24px}
+.lux-test .q{font-family:'Playfair Display';font-size:54px;line-height:1;color:var(--gold);opacity:.7}
+.lux-test p{font-size:14px;color:#d5ddd3;margin:10px 0 16px}
+.lux-test b{display:block;font-size:13px;letter-spacing:.08em}
+.lux-test small{font-size:11px;letter-spacing:.2em;color:var(--muted)}

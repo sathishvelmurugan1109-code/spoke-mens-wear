@@ -1,0 +1,19 @@
+.sbs-content{position:relative;z-index:2;width:100%;padding:26px 24px 22px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.sbs-content>span:first-child{flex:1;min-width:0}
+.sbs-num{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.34em;color:#8fe3a1;font-weight:600}
+.sbs-num::after{content:'';width:34px;height:1px;background:rgba(143,227,161,.55)}
+.sbs-tip{display:block;font-family:'Playfair Display',serif;font-size:clamp(30px,2.6vw,44px);line-height:1.02;letter-spacing:.01em;color:#f6f2e7;margin:10px 0 8px;transition:transform .6s var(--ease)}
+.sbs-desc{display:block;font-size:13px;color:#c4d3c5;max-width:34ch;margin:0 0 14px;transition:transform .6s var(--ease)}
+.sbs-cta{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:11px;font-weight:800;letter-spacing:.24em;color:#e8f3ea}
+.sbs-cta .bar{width:26px;height:1px;background:#4ade80;transition:width .4s var(--ease)}
+.sbs-card:hover .sbs-tip{transform:translateY(-4px)}
+.sbs-card:hover .sbs-desc{transform:translateY(-3px)}
+.sbs-card:hover .sbs-cta .bar{width:44px}
+.sbs-arrow{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:20px;color:#eafff0;border:1px solid rgba(255,255,255,.32);background:rgba(3,10,7,.38);backdrop-filter:blur(4px);transition:.4s var(--ease)}
+.sbs-card:hover .sbs-arrow{background:#2fdc72;border-color:#2fdc72;color:#04120c;transform:translate(3px,-3px)}
+.sbs-feature-tag{position:absolute;z-index:2;top:18px;right:18px;font-size:10px;letter-spacing:.3em;color:#ecdcab;border:1px solid rgba(236,220,171,.4);padding:8px 12px;background:rgba(1,6,4,.45)}
+.sbs-wide .sbs-content{max-width:560px}
+@media (max-width:1180px){.sbs-section{padding:84px 0 76px}.sbs-grid{grid-template-columns:1fr 1fr;grid-template-areas:'shirts shirts' 'tshirts trousers' 'jeans jeans';grid-template-rows:360px 300px 300px}.sbs-tip{font-size:clamp(28px,3.4vw,38px)}}
+@media (max-width:760px){.sbs-section{padding:64px 0 60px}.sbs-head{align-items:flex-start;flex-direction:column}.sbs-explore{width:100%;justify-content:center}.sbs-grid{grid-template-columns:1fr;grid-template-areas:'shirts' 'tshirts' 'trousers' 'jeans';grid-template-rows:none;gap:14px}.sbs-card{min-height:320px}.sbs-cell--0 .sbs-card{min-height:430px}.sbs-content{padding:22px 18px 20px}.sbs-arrow{width:48px;height:48px}.sbs-desc{max-width:44ch}}
+@media (hover:none){.sbs-card:hover .sbs-media img{transform:scale(1.02)}.sbs-arrow{transition:none}}
+@media (prefers-reduced-motion:reduce){.sbs-head,.sbs-cell,.sbs-media img,.sbs-tip,.sbs-desc{transition:none!important;animation:none!important}.sbs-head,.sbs-cell{opacity:1;transform:none}.sbs-media img{opacity:1}}

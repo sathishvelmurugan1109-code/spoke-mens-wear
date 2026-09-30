@@ -1,0 +1,34 @@
+/* social + cta + footer + drawer */
+.lux-social{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:26px}
+.lux-soc{position:relative;overflow:hidden;aspect-ratio:1/1.15;background:#0a1a12}
+.lux-soc img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.lux-soc:hover img{transform:scale(1.1)}
+.lux-soc::after{content:'@SPOKE';position:absolute;inset:auto 0 0 0;padding:12px;font-size:10px;letter-spacing:.22em;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent);opacity:0;transition:.3s;color:#fff}
+.lux-soc:hover::after{opacity:1}
+.lux-cta{margin-top:84px;position:relative;overflow:hidden;background:linear-gradient(120deg,#03130c,#062417 60%,#03130c);border-top:1px solid rgba(217,180,91,.2);border-bottom:1px solid rgba(217,180,91,.2)}
+.lux-cta-inner{width:min(1320px,92%);margin:0 auto;padding:84px 0;display:grid;grid-template-columns:1.2fr 0.8fr;gap:30px;align-items:center}
+.lux-cta h2{font-family:'Oswald';font-size:clamp(44px,6vw,84px);line-height:.98}
+.lux-cta h2 em{font-style:normal;color:var(--lime)}
+.lux-cta p{color:#b9c7ba;margin:14px 0 26px;max-width:52ch}
+.lux-cta-visual{position:relative;min-height:340px;border:1px solid rgba(217,180,91,.3);overflow:hidden}
+.lux-cta-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lux-foot{background:#010503;border-top:1px solid rgba(217,180,91,.16);padding:64px 0 0}
+.lux-foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1.3fr;gap:28px;width:min(1320px,92%);margin:0 auto}
+.lux-foot h5{font-size:11px;letter-spacing:.22em;margin-bottom:16px;color:var(--champagne)}
+.lux-foot a,.lux-foot p{display:block;font-size:13px;color:#93a89a;margin-bottom:10px;line-height:1.6}
+.lux-foot a:hover{color:var(--lime)}
+.lux-news{display:flex;margin-top:14px;border:1px solid rgba(255,255,255,.16)}
+.lux-news input{flex:1;background:transparent;border:none;color:#fff;padding:14px;font-size:13px;outline:none;min-width:0}
+.lux-news button{background:var(--lime);border:none;font-weight:800;font-size:11px;letter-spacing:.14em;padding:0 20px;min-height:48px}
+.copy{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding:18px 0;font-size:11px;color:#7e9387}
+.copy-inner{width:min(1320px,92%);margin:0 auto;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:80}
+.drawer{position:fixed;top:0;right:0;height:100dvh;width:min(420px,92vw);background:#071711;border-left:1px solid rgba(217,180,91,.25);z-index:90;display:flex;flex-direction:column;animation:slidein .3s ease}
+@keyframes slidein{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:1px solid rgba(255,255,255,.1)}
+.drawer-body{flex:1;overflow:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px}
+.cart-line{display:grid;grid-template-columns:70px 1fr auto;gap:12px;align-items:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);padding:10px}
+.cart-line img{width:70px;height:84px;object-fit:cover}
+.qty{display:flex;align-items:center;gap:8px;margin-top:8px}
+.qty button{width:30px;height:30px;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-size:16px}
+.drawer-foot{padding:20px;border-top:1px solid rgba(255,255,255,.1)}
